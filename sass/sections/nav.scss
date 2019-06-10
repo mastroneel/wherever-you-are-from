@@ -1,0 +1,29 @@
+.nav-desktop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: $black;
+  height: 128px;
+  line-height: 128px;
+  img {
+    margin-left: 74px;
+    width: 40px;
+    display: inline-flex;
+    margin-bottom: -5px;
+  }
+  span {
+    margin-left: 48px;
+    font-size: 18px;
+    line-height: 21px;
+  }
+  .home-link {
+    color: $white;
+    text-decoration: none;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .nav-right a {
+    margin-right: 48px;
+  }
+}
