@@ -216,6 +216,7 @@ input {
   border-radius: 50%;
   border: 1px solid $black;
   background: transparent;
+  margin-top: 16px;
   &.current {
     background-color: $black;
   }
@@ -229,5 +230,6 @@ input {
   .quiz-dot {
     height: 8px;
     width: 8px;
+    margin-top: 8px;
   }
 }

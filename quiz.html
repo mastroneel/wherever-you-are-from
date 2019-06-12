@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Wherever you are from </title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.css" />
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <script type="text/javascript">
+      var qNumber=0
+      var flagName=''
+      var imgDir='img/';
+
+      function setQuestionFlags(but)
+      {
+        if (but!=null)
+        {
+          S=String(but.innerHTML)
+          if (S=='') {return false}
+          S=S.substring(S.length-7,S.length-6)
+          flagName=flagName+S
+          document.getElementById('pagecounter').innerText=qNumber+1+' / 7'
+        if (qNumber==6)
+          {
+            questionFlag('','',1)
+            questionFlag('','',2)
+            questionFlag('','',3)
+            setQuestion(flagName)
+            return false
+          }
+        }
+        qNumber=qNumber+1
+        questionFlag(qNumber,'A',1)
+        if (qNumber==1){
+          $('.quiz-dot').css('background', 'transparent');
+          $('.quiz-dot-1').css('background', 'black');
+        }
+        if (qNumber==2){
+          $('.quiz-dot').css('background', 'transparent');
+          $('.quiz-dot-2').css('background', 'black');
+        }
+        if (qNumber==3){
+          $('.quiz-dot').css('background', 'transparent');
+          $('.quiz-dot-3').css('background', 'black');
+        }
+        if (qNumber==4){
+          $('.quiz-dot').css('background', 'transparent');
+          $('.quiz-dot-4').css('background', 'black');
+        }
+        if (qNumber==5){
+          $('.quiz-dot').css('background', 'transparent');
+          $('.quiz-dot-5').css('background', 'black');
+        }
+        if (qNumber==6){
+          $('.quiz-dot').css('background', 'transparent');
+          $('.quiz-dot-6').css('background', 'black');
+        }
+        if (qNumber==1 | qNumber==6 )
+        {
+        questionFlag(qNumber,'',2)
+        questionFlag(qNumber,'B',3)
+        }
+        else
+        {
+        questionFlag(qNumber,'B',2)
+        questionFlag(qNumber,'C',3)
+        }
+      }
+
+
+    function setQuestion(flagName)
+      {
+        H='<h1>Where Ever you are from</h1><p>this is a placeholder</p><br><form id="myForm" action="" method="POST" target="no-target"><INPUT TYPE="text" PlaceHolder="Wherever you are from?" id="whereverfield" name="wherever"><INPUT TYPE="hidden" id="myflagfield" name="flag" value="'+flagName+'"><br><br><button id="subBut" onclick="sendToGoogle();" style-"cursor:pointer;">Submit</button></form>'
+        document.getElementById('Instructions').innerHTML=H
+      }
+
+    function setFlag(tag,Fname)
+      {
+       document.getElementById(tag).innerHTML='<img src="'+imgDir+Fname+'.png'+'">'
+      }
+
+    function questionFlag(n,Letter,pos)
+      {
+        Typ='.png'
+        if (Letter=='')
+        {
+         document.getElementById('symb'+pos).innerHTML=''
+        }
+        else
+        {
+          F=imgDir+n+'_'+Letter+Typ
+          document.getElementById('symb'+pos).innerHTML='<img src="'+F+'">'
+        }
+      }
+
+  function sendToGoogle()
+    {
+      F=document.forms[0];
+      var baseURL='https://docs.google.com/forms/d/e/1FAIpQLSeSrk5O3OzgvC8Xse8zLXy8TR2GACMDkadiJq-OnydQH1qbmw/formResponse?';
+      var submitRef='&submit=Submit';
+      whereverid='&entry.444671557='
+      flagid='&entry.522666394='
+      wherever=F.wherever.value;
+      flag=F.flag.value;
+      submitURL=(baseURL+whereverid+wherever+flagid+flag+submitRef);
+      F.action=submitURL;
+      F.submit()
+      F.wherever.value='thank you';
+      B=document.getElementById('subBut')
+      B.style='visibility:hidden;'
+      setFlag('symb2',flagName);
+      document.getElementById('pagecounter').innerHTML='You have now completed your personnal flag <a href="index.html?wherever='+wherever+'&flag='+flag+'">home</a>';
+      setFlag('bigflag',flagName);
+      BF=document.getElementById('bigflag');
+      BF.style.zIndex=3;
+      BF.style.opacity=1
+
+    }
+
+  function readGoogleData()
+    {
+      var baseURL='https://docs.google.com/spreadsheets/d/19nkbb5aKbapOld1R888cI7Z_b4TaaLxpPFa92IZcyEw/edit#gid=642024333';
+      var baseURL='https://spreadheets.google.com/feeds/list/d/19nkbb5aKbapOld1R888cI7Z_b4TaaLxpPFa92IZcyEw/1/public/basic?alt=json';
+      var sheetURL='https://docs.google.com/spreadsheets/d/19nkbb5aKbapOld1R888cI7Z_b4TaaLxpPFa92IZcyEw?alt=jsonp';
+      $.ajax({url:sheetURL,datatype:'jsonp',user:'anouksy@gmail.com',password:'ysabel87',crossDomain: true, xhrFields:{ withCredentials:true}})
+    }
+
+
+
+  </script>
+</head>
+<body>
+
+  <div class="exit-quiz-modal">
+    <div class="modal-inner">
+      <p class="label">
+        Your current state
+      </p>
+      <p class="info">
+        Are you sure you want to quit the test?
+        You can always come back and  do another one later.
+      </p>
+      <div class="button-dark button-large close-modal">
+        Continue test
+      </div>
+      <a href="index.html" class="button-light button-large">
+        Exit test
+      </a>
+    </div>
+  </div>
+
+  <div class="content-container">
+
+    <div class="wrapperQ">
+      <div class="close-quiz-button">
+        <div>
+          <img src="img/close.svg" />
+        </div>
+      </div>
+
+
+
+      <div class="navL" onclick="setFlags()">
+        <img src="img/back.svg" onclick="goBack()">
+      </div>
+
+      <div id="pagecounter" class="pagecounter">
+        1 / 6
+      </div>
+
+      <div class="quiz-dots">
+        <div class="quiz-dot quiz-dot-1"></div>
+        <div class="quiz-dot quiz-dot-2"></div>
+        <div class="quiz-dot quiz-dot-3"></div>
+        <div class="quiz-dot quiz-dot-4"></div>
+        <div class="quiz-dot quiz-dot-5"></div>
+        <div class="quiz-dot quiz-dot-6"></div>
+      </div>
+
+      <div class="row quiz-row">
+        <!-- <div class="col-xs-2 col-sm-1"> -->
+
+        <!-- </div> -->
+        <div class="col-xs-12">
+          <div id="Instructions" class="instructions">
+            <p class="label">YOUR CURRENT STATE</p>
+            <p class="instructions instructions-desktop">On each of the following screens, select one of the presented shapes.  Follow your gut feeling…</p>
+            <p class="instructions instructions-mobile">
+              On each of the following screens,  select one of the presented shapes.
+            </p>
+          </div>
+          <div class="row flag-row">
+            <div class="col-xs-12 col-sm-4">
+              <div id="symb1" class="symb" onclick="setQuestionFlags(this)">
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+              <div id="symb3" class="symb" onclick="setQuestionFlags(this)">
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+              <div id="symb2" class="symb" onclick="setQuestionFlags(this)">
+              </div>
+            </div>
+          </div>
+          <div class="row instructions-mobile top-margin">
+            <div class="col-xs-12 center">
+              <p class="instructions">
+                Follow your gut feeling to find your true current state.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+  <div class="wrapperQ">
+    <!-- <div class="navL" onclick="setFlags()">
+      <img src="img/back.svg" onclick="goBack()">
+    </div> -->
+
+
+
+
+
+    <div class="navR">
+      <!-- <img src="img/back.png" onclick="goBack()"> -->
+    </div>
+  <iframe src="#" id="no-target" name="no-target" style="visibility:hidden"></iframe>
+  </div>
+  <div id="bigflag" class="bigFlag">
+  </div>
+</body>
+  <script type="text/javascript">
+//  readGoogleData();
+  setQuestionFlags()
+  </script>
+
+  <script>
+
+  $('.close-quiz-button').click(function() {
+    $('.exit-quiz-modal').fadeIn();
+  });
+
+  $('.close-modal').click(function() {
+    $('.exit-quiz-modal').fadeOut();
+  });
+
+
+  </script>
+</html>
