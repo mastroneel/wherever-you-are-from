@@ -54,6 +54,9 @@ h2 {
 .black {
   color: #000; }
 
+.white {
+  color: #fff; }
+
 .button-large, .button-small {
   font-family: "Karla", sans-serif;
   font-style: normal;
@@ -68,7 +71,10 @@ h2 {
   font-size: 18px;
   line-height: 56px;
   width: 204px;
-  height: 56px; }
+  height: 56px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; }
 
 .button-small {
   font-size: 12px;
@@ -78,12 +84,16 @@ h2 {
 
 .button-dark {
   color: #fff;
-  background-color: #000; }
+  background-color: #000;
+  border: none; }
   .button-dark:hover {
     background-color: rgba(0, 0, 0, 0.8); }
 
 .button-disabled {
-  background-color: #BDBDBD; }
+  background-color: #BDBDBD;
+  color: #E0E0E0;
+  border: none;
+  pointer-events: none; }
 
 .button-light {
   color: #000;
@@ -626,8 +636,60 @@ input {
     .states .col-xs-12 .image-overlay p, .states .col-sm-3 .image-overlay p {
       top: 30%;
       transform: translateY(30%); } }
+.finding-results {
+  display: none;
+  color: #fff;
+  background-color: #000;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000; }
+  .finding-results .finding-results-inner {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%); }
+    .finding-results .finding-results-inner .label {
+      font-size: 18px; }
+
+.results {
+  display: none; }
+  .results .button-small {
+    display: inline-block;
+    height: 28px;
+    line-height: 32px;
+    width: 114px;
+    font-size: 12px;
+    color: #fff; }
+  .results .label {
+    font-size: 18px; }
+  .results .current-state-container {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%); }
+  .results .bigFlag {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%); }
+
+#bigFlag img {
+  width: 100%; }
+
+@media (max-width: 1300px) {
+  .results .content-container {
+    width: 90%; } }
 .wrapperQ .instructions {
   font-size: 16px; }
+  .wrapperQ .instructions input {
+    max-width: none;
+    width: 70%; }
+    .wrapperQ .instructions input:focus {
+      outline: none; }
+  .wrapperQ .instructions .button-large {
+    float: right;
+    margin-right: 30%;
+    margin-top: 80px; }
 .wrapperQ .close-quiz-button {
   position: absolute;
   top: 64px;
@@ -742,6 +804,40 @@ input {
       margin-top: 20px;
       line-height: 24px; }
 
+  .finding-results .finding-results-inner .label {
+    font-size: 14px; }
+
+  .results {
+    text-align: center; }
+    .results .share-button {
+      font-size: 12px;
+      line-height: 32px;
+      width: 20%;
+      height: 32px;
+      position: absolute;
+      bottom: 60px;
+      left: 40%; }
+    .results .bigFlag img {
+      max-width: 350px !important; }
+
+  .wrapperQ form input {
+    margin-top: 74px; }
+  .wrapperQ .instructions {
+    font-size: 16px; }
+    .wrapperQ .instructions input {
+      max-width: none;
+      width: 100%; }
+      .wrapperQ .instructions input:focus {
+        outline: none; }
+    .wrapperQ .instructions .button-large {
+      margin-right: 0;
+      margin-top: 64px;
+      width: 158px;
+      height: 40px;
+      line-height: 40px;
+      font-size: 14px; }
+    .wrapperQ .instructions p {
+      font-size: 16px; }
   .wrapperQ .close-quiz-button {
     top: 24px;
     right: 24px; }
@@ -772,6 +868,10 @@ input {
       .wrapperQ .quiz-row .flag-row img {
         margin-top: 40px; } }
 @media (max-width: 450px) {
+  .wrapperQ .instructions p {
+    font-size: 14px; }
+  .wrapperQ .instructions .button-large {
+    font-size: 12px; }
   .wrapperQ .pagecounter {
     font-size: 12px; }
   .wrapperQ .quiz-row .label {

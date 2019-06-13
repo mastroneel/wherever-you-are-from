@@ -10,7 +10,7 @@
   <script type="text/javascript">
       var qNumber=0
       var flagName=''
-      var imgDir='img/';
+      var imgDir='img/flags/';
 
       function setQuestionFlags(but)
       {
@@ -20,15 +20,18 @@
           if (S=='') {return false}
           S=S.substring(S.length-7,S.length-6)
           flagName=flagName+S
-          document.getElementById('pagecounter').innerText=qNumber+1+' / 7'
+          document.getElementById('pagecounter').innerText=qNumber+1+' / 6'
         if (qNumber==6)
           {
             questionFlag('','',1)
             questionFlag('','',2)
             questionFlag('','',3)
             setQuestion(flagName)
-            return false
           }
+          if (qNumber==7)
+            {
+              return false
+            }
         }
         qNumber=qNumber+1
         questionFlag(qNumber,'A',1)
@@ -56,6 +59,9 @@
           $('.quiz-dot').css('background', 'transparent');
           $('.quiz-dot-6').css('background', 'black');
         }
+        if (qNumber>=7){
+          $('.navL, .pagecounter, .quiz-dots, .quiz-flag, #symb1, #symb2, #symb3, .instructions-mobile.top-margin').css('display', 'none');
+        }
         if (qNumber==1 | qNumber==6 )
         {
         questionFlag(qNumber,'',2)
@@ -71,13 +77,30 @@
 
     function setQuestion(flagName)
       {
-        H='<h1>Where Ever you are from</h1><p>this is a placeholder</p><br><form id="myForm" action="" method="POST" target="no-target"><INPUT TYPE="text" PlaceHolder="Wherever you are from?" id="whereverfield" name="wherever"><INPUT TYPE="hidden" id="myflagfield" name="flag" value="'+flagName+'"><br><br><button id="subBut" onclick="sendToGoogle();" style-"cursor:pointer;">Submit</button></form>'
+        H='<p>...<br/>Before discovering your current State… <br>What is your Nationality?</p><br><form id="myForm" action="" method="POST" target="no-target"><INPUT TYPE="text" PlaceHolder="Your nationality" id="whereverfield" name="wherever"><INPUT TYPE="hidden" id="myflagfield" name="flag" value="'+flagName+'"><br><br><button id="subBut" class="button-large button-disabled" onclick="sendToGoogle();" style-"cursor:pointer;">START</button></form>'
         document.getElementById('Instructions').innerHTML=H
+
+        $( "#whereverfield" ).keyup(function() {
+          $('#subBut').removeClass('button-disabled');
+          $('#subBut').addClass('button-dark');
+          if ($.trim($(this).val()).length == 0){
+            $('#subBut').removeClass('button-dark');
+            $('#subBut').addClass('button-disabled');
+          }
+        });
+
+        $('#subBut').click(function() {
+          $(".finding-results").show();
+          $(".quiz-row").css('display', 'none');
+          $(".results").css('display', 'block');
+          $("body").css('background', 'black');
+          setTimeout(function() { $(".finding-results").hide(); }, 2000);
+        });
       }
 
     function setFlag(tag,Fname)
       {
-       document.getElementById(tag).innerHTML='<img src="'+imgDir+Fname+'.png'+'">'
+       document.getElementById(tag).innerHTML='<img style="width: 100%;" src="'+imgDir+Fname+'.png'+'">'
       }
 
     function questionFlag(n,Letter,pos)
@@ -90,7 +113,7 @@
         else
         {
           F=imgDir+n+'_'+Letter+Typ
-          document.getElementById('symb'+pos).innerHTML='<img src="'+F+'">'
+          document.getElementById('symb'+pos).innerHTML='<img class="quiz-flag" src="'+F+'">'
         }
       }
 
@@ -125,6 +148,9 @@
       var sheetURL='https://docs.google.com/spreadsheets/d/19nkbb5aKbapOld1R888cI7Z_b4TaaLxpPFa92IZcyEw?alt=jsonp';
       $.ajax({url:sheetURL,datatype:'jsonp',user:'anouksy@gmail.com',password:'ysabel87',crossDomain: true, xhrFields:{ withCredentials:true}})
     }
+
+
+
 
 
 
@@ -215,6 +241,20 @@
       </div>
     </div>
 
+
+
+
+    <div class="finding-results center">
+      <div class="finding-results-inner">
+        <img src="img/logo-white.png" />
+        <p class="label">
+          FINDING your current state…
+        </p>
+      </div>
+    </div>
+
+
+
   </div>
 
 
@@ -223,7 +263,7 @@
 
 
 
-  <div class="wrapperQ">
+  <!-- <div class="wrapperQ"> -->
     <!-- <div class="navL" onclick="setFlags()">
       <img src="img/back.svg" onclick="goBack()">
     </div> -->
@@ -232,13 +272,108 @@
 
 
 
-    <div class="navR">
+    <!-- <div class="navR"> -->
       <!-- <img src="img/back.png" onclick="goBack()"> -->
-    </div>
+    <!-- </div> -->
   <iframe src="#" id="no-target" name="no-target" style="visibility:hidden"></iframe>
+  <!-- </div> -->
+
+  <div class="results white">
+
+    <!-- desktop navigation -->
+    <nav class="nav-desktop">
+      <div class="row">
+        <div class="col-xs-12 col-sm-5">
+          <a class="home-link" href="#top-page">
+            <img src="img/logo-white.png" />
+          </a>
+          <a class="home-link" href="#top-page">
+            <span>Wherever</span>
+          </a>
+        </div>
+        <div class="col-xs-12 col-sm-7">
+          <div class="right nav-right">
+            <a class="nav-link" href="#about">About</a>
+            <a class="nav-link" href="#states">States</a>
+            <a class="nav-link button-small button-secondary" href="quiz.html">Retake Test</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- end desktop navigation -->
+
+    <!-- mobile navigation -->
+    <nav class="nav-mobile">
+      <div class="menu-trigger">
+        <img src="img/logo-white.png" />
+      </div>
+
+      <div class="slide-menu">
+        <div class="close-button">
+          <img src="img/close.svg" />
+        </div>
+        <ul>
+          <li>
+            <a class="label" href="#top">Wherever</a>
+          </li>
+          <li>
+            <a class="label" href="#about">About</a>
+          </li>
+          <li>
+            <a class="label" href="#states">States</a>
+          </li>
+          <li class="tall">
+            <p class="label">
+              Your current state
+            </p>
+            <a href="quiz.html" class="button-large button-dark">Find Out</a>
+          </li>
+        </ul>
+        <div class="row contact-row">
+          <div class="col-xs-3 center">
+            <a href="https://www.instagram.com/mixed.identities/?hl=en">
+              <img src="img/instagram-black.svg" />
+            </a>
+          </div>
+          <div class="col-xs-9">
+            <a class="text-link black" href="www.anouksylvestre.com">www.anouksylvestre.com</a>
+          </div>
+          <div class="col-xs-3 center">
+            <a href="#" class="facebook-link">
+              <img src="img/facebook-black.svg" />
+            </a>
+          </div>
+          <div class="col-xs-9">
+            <a class="email-link black" href="anouk.sylvestre@hotmail.com">anouk.sylvestre@hotmail.com</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- end mobile navigation -->
+
+    <div class="content-container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-5">
+          <div class="current-state-container">
+            <p class="label">
+              YOUR CURRENT STATE iS
+            </p>
+            <p class="current-state" id="currentState">
+
+            </p>
+            <a href="#" class="share-button button-large button-light">
+              Share
+            </a>
+          </div>  
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-7">
+          <div id="bigflag" class="bigFlag">
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div id="bigflag" class="bigFlag">
-  </div>
+
 </body>
   <script type="text/javascript">
 //  readGoogleData();
@@ -254,6 +389,12 @@
   $('.close-modal').click(function() {
     $('.exit-quiz-modal').fadeOut();
   });
+
+
+
+
+
+
 
 
   </script>

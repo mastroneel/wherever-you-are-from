@@ -69,6 +69,10 @@ h2 {
   color: $black;
 }
 
+.white {
+  color: $white;
+}
+
 .button-large, .button-small {
   font-family: $main-font;
   font-style: normal;
@@ -85,6 +89,9 @@ h2 {
   line-height: 56px;
   width: 204px;
   height: 56px;
+  -webkit-appearance: none;
+   -moz-appearance:    none;
+   appearance:         none;
 }
 
 .button-small {
@@ -97,6 +104,7 @@ h2 {
 .button-dark {
   color: $white;
   background-color: $black;
+  border: none;
   &:hover {
     background-color: $transparent-black;
   }
@@ -104,6 +112,9 @@ h2 {
 
 .button-disabled {
   background-color: $medium-grey;
+  color: $light-grey;
+  border: none;
+  pointer-events: none;
 }
 
 .button-light {
