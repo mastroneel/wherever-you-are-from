@@ -2,6 +2,7 @@
 <html>
 <head>
   <title> Wherever you are from </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.css" />
   <link rel="stylesheet" href="css/app.css">
   <link rel="icon" type="image/png" href="img/favicon.png">
@@ -127,17 +128,26 @@
       wherever=F.wherever.value;
       flag=F.flag.value;
       submitURL=(baseURL+whereverid+wherever+flagid+flag+submitRef);
+
+      // https://docs.google.com/forms/d/e/1FAIpQLSeSrk5O3OzgvC8Xse8zLXy8TR2GACMDkadiJq-OnydQH1qbmw/formResponse?&entry.444671557=fds&entry.522666394=BCCCCB&submit=Submit
+
       F.action=submitURL;
       F.submit()
       F.wherever.value='thank you';
       B=document.getElementById('subBut')
       B.style='visibility:hidden;'
       setFlag('symb2',flagName);
-      document.getElementById('pagecounter').innerHTML='You have now completed your personnal flag <a href="index.html?wherever='+wherever+'&flag='+flag+'">home</a>';
+      document.getElementById('pagecounter').innerHTML='You have now completed your personal flag <a href="index.html?wherever='+wherever+'&flag='+flag+'">home</a>';
       setFlag('bigflag',flagName);
       BF=document.getElementById('bigflag');
       BF.style.zIndex=3;
       BF.style.opacity=1
+
+      console.log(F);
+
+      $.getJSON('http://gd.geobytes.com/GetCityDetails?callback=?', function(data) {
+        console.log(JSON.stringify(data.geobytestitle, null, 2));
+      });
 
     }
 
@@ -278,6 +288,25 @@
   <iframe src="#" id="no-target" name="no-target" style="visibility:hidden"></iframe>
   <!-- </div> -->
 
+  <div class="exit-quiz-modal share-modal">
+    <div class="modal-inner">
+      <div class="close-share-modal-button">
+        <img src="img/close.svg" />
+      </div>
+      <p class="label">
+        Share your current state
+      </p>
+      <p class="info">
+        Send it to your own email address,<br>
+         or share it with your friends!
+      </p>
+      <form>
+        <input type="email" placeholder="Email address"/>
+        <input type="submit" class="button-disabled button-large share-submit" value="Send to email">
+      </form>
+    </div>
+  </div>
+
   <div class="results white">
 
     <!-- desktop navigation -->
@@ -306,6 +335,9 @@
     <nav class="nav-mobile">
       <div class="menu-trigger">
         <img src="img/logo-white.png" />
+      </div>
+      <div class="retake-button">
+        <a class="nav-link button-small button-secondary" href="quiz.html">Retake Test</a>
       </div>
 
       <div class="slide-menu">
@@ -352,22 +384,24 @@
     <!-- end mobile navigation -->
 
     <div class="content-container">
-      <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-5">
-          <div class="current-state-container">
-            <p class="label">
-              YOUR CURRENT STATE iS
-            </p>
-            <p class="current-state" id="currentState">
+      <div class="results-container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-5">
+            <div class="current-state-container">
+              <p class="label">
+                YOUR CURRENT STATE iS
+              </p>
+              <p class="current-state" id="currentState">
 
-            </p>
-            <a href="#" class="share-button button-large button-light">
-              Share
-            </a>
-          </div>  
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-7">
-          <div id="bigflag" class="bigFlag">
+              </p>
+              <a href="#" class="share-button button-large button-light">
+                Share
+              </a>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-7">
+            <div id="bigflag" class="bigFlag">
+            </div>
           </div>
         </div>
       </div>
@@ -393,7 +427,37 @@
 
 
 
+  // mobile menu triggers
+  $('.menu-trigger').click(function() {
+    $('.slide-menu').css('left', '0');
+  });
 
+  $('.close-button').click(function() {
+    $('.slide-menu').css('left', '-450px');
+  });
+
+  $('.slide-menu ul li a').click(function() {
+    $('.slide-menu').css('left', '-450px');
+  });
+
+
+  // share modal
+  $('.share-button').click(function() {
+    $('.share-modal').fadeIn();
+  });
+
+  $('.close-share-modal-button').click(function() {
+    $('.share-modal').fadeOut();
+  });
+
+  $( ".share-modal form input" ).keyup(function() {
+    $('.share-submit').removeClass('button-disabled');
+    $('.share-submit').addClass('button-dark');
+    if ($.trim($(this).val()).length == 0){
+      $('.share-submit').removeClass('button-dark');
+      $('.share-submit').addClass('button-disabled');
+    }
+  });
 
 
 

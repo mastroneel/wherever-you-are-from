@@ -761,6 +761,23 @@ input {
       margin-top: 20px;
       line-height: 24px; }
 
+.share-modal .close-share-modal-button {
+  position: absolute;
+  right: 40px;
+  top: 60px; }
+  .share-modal .close-share-modal-button img {
+    width: 40px; }
+.share-modal form {
+  width: 65%;
+  margin: 0 auto; }
+  .share-modal form input {
+    display: block;
+    margin: 60px auto 65px auto;
+    width: 100% !important;
+    max-width: none; }
+    .share-modal form input:focus {
+      outline: none; }
+
 @media (max-width: 1451px) {
   .wrapperQ .navL {
     left: 65px; } }
@@ -783,6 +800,21 @@ input {
   .wrapperQ .quiz-row .instructions-mobile {
     display: none; } }
 @media (max-width: 767px) {
+  .share-modal .modal-inner {
+    padding-top: 80px !important; }
+    .share-modal .modal-inner .button-large {
+      width: 100% !important; }
+  .share-modal form {
+    max-width: 85%; }
+    .share-modal form input {
+      width: 100%; }
+  .share-modal .close-share-modal-button {
+    position: absolute;
+    right: 20px;
+    top: 20px; }
+    .share-modal .close-share-modal-button img {
+      width: 32px; }
+
   .exit-quiz-modal .modal-inner {
     background-color: #fff;
     width: 85%;
@@ -809,13 +841,22 @@ input {
 
   .results {
     text-align: center; }
+    .results .nav-mobile {
+      text-align: left; }
+      .results .nav-mobile .menu-trigger {
+        position: absolute; }
+      .results .nav-mobile .label {
+        color: #000; }
+      .results .nav-mobile .retake-button {
+        position: absolute;
+        right: 26px; }
     .results .share-button {
       font-size: 12px;
       line-height: 32px;
       width: 20%;
       height: 32px;
       position: absolute;
-      bottom: 60px;
+      bottom: -350px;
       left: 40%; }
     .results .bigFlag img {
       max-width: 350px !important; }
@@ -868,6 +909,10 @@ input {
       .wrapperQ .quiz-row .flag-row img {
         margin-top: 40px; } }
 @media (max-width: 450px) {
+  .results .share-button {
+    width: 40%;
+    left: 30%; }
+
   .wrapperQ .instructions p {
     font-size: 14px; }
   .wrapperQ .instructions .button-large {
@@ -880,5 +925,8 @@ input {
     font-size: 14px; }
   .wrapperQ .quiz-row .flag-row img {
     max-width: 158px; } }
+@media (max-width: 350px) {
+  .results .share-button {
+    bottom: -300px; } }
 
 /*# sourceMappingURL=app.css.map */

@@ -164,6 +164,30 @@
   }
 }
 
+.share-modal {
+  .close-share-modal-button {
+    position: absolute;
+    right: 40px;
+    top: 60px;
+    img {
+      width: 40px;
+    }
+  }
+  form {
+    width: 65%;
+    margin: 0 auto;
+    input {
+      display: block;
+      margin: 60px auto 65px auto;
+      width: 100% !important;
+      max-width: none;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
+
 @media (max-width: 1451px) {
   .wrapperQ {
     .navL {
@@ -215,6 +239,28 @@
 }
 
 @media (max-width: 767px) {
+  .share-modal {
+    .modal-inner {
+      padding-top: 80px !important;
+      .button-large {
+        width: 100% !important;
+      }
+    }
+    form {
+      max-width: 85%;
+      input {
+        width: 100%;
+      }
+    }
+    .close-share-modal-button {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      img {
+        width: 32px;
+      }
+    }
+  }
   .exit-quiz-modal {
     .modal-inner {
       background-color: $white;
@@ -252,13 +298,26 @@
   }
   .results {
     text-align: center;
+    .nav-mobile  {
+      text-align: left;
+      .menu-trigger {
+        position: absolute;
+      }
+      .label {
+        color: $black;
+      }
+      .retake-button {
+        position: absolute;
+        right: 26px;
+      }
+    }
     .share-button {
       font-size: 12px;
       line-height: 32px;
       width: 20%;
       height: 32px;
       position: absolute;
-      bottom: 60px;
+      bottom: -350px;
       left: 40%;
     }
     .bigFlag img {
@@ -339,6 +398,12 @@
 
 
 @media (max-width: 450px) {
+  .results {
+    .share-button {
+      width: 40%;
+      left: 30%;
+    }
+  }
   .wrapperQ {
     .instructions {
       p {
@@ -363,6 +428,15 @@
           max-width: 158px;
         }
       }
+    }
+  }
+}
+
+
+@media (max-width: 350px) {
+  .results {
+    .share-button {
+      bottom: -300px;
     }
   }
 }
