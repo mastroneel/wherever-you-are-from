@@ -24,12 +24,17 @@ body {
   font-size: 16pt; }
 
 p {
-  font-size: 24pt; }
+  font-size: 24pt;
+  font-style: normal;
+  font-weight: normal; }
 
 label, .label {
-  font-size: 18pt;
+  font-size: 18px;
   letter-spacing: 0.2em;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 24px; }
 
 .label_small {
   font-size: 12pt;
@@ -37,7 +42,9 @@ label, .label {
 
 h1, h2 {
   font-family: "Caudex", serif;
-  margin: 0; }
+  margin: 0;
+  font-style: normal;
+  font-weight: normal; }
 
 h1 {
   font-size: 48pt; }
@@ -243,6 +250,8 @@ input {
   visibility: hidden;
   opacity: 0;
   transition: 0.3s; }
+  .bottom-nav img {
+    width: 40px; }
 
 .nav-mobile {
   height: 72px;
@@ -360,8 +369,6 @@ input {
     font-size: 16px;
     line-height: 24px;
     margin-top: 35px; }
-  .hero .label {
-    font-size: 18pt; }
   .hero .button-large {
     margin-top: 40px; }
 
@@ -431,13 +438,11 @@ input {
     background-size: 250%; }
 
   .hero h1 {
-    font-size: 25pt; }
+    font-size: 24px; }
   .hero .button-large {
     margin-top: 20px; }
   .hero p {
-    margin-top: 15px; }
-  .hero .label {
-    font-size: 12pt; } }
+    margin-top: 15px; } }
 @media (max-width: 350px) {
   .home-content-container {
     background-size: 270%; }
@@ -445,9 +450,8 @@ input {
   .hero h1 {
     font-size: 22pt; } }
 .about {
-  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
   color: #fff;
-  padding-top: 258px; }
+  transition: 0.5s; }
   .about .row {
     border: 1px solid #fff;
     padding: 64px 114px; }
@@ -478,6 +482,9 @@ input {
     .about .email-link:hover {
       color: #BDBDBD; }
 
+.dark-bg {
+  background-color: rgba(0, 0, 0, 0.8); }
+
 @media (max-width: 1300px) {
   .about .row {
     width: 90%;
@@ -506,8 +513,6 @@ input {
   .contact-mobile .top-margin {
     margin-top: 16px; } }
 @media (max-width: 500px) {
-  .about .heading-row .label {
-    font-size: 12px; }
   .about .heading-row h1 {
     font-size: 24px;
     margin-top: 15px; }
@@ -679,6 +684,9 @@ input {
 @media (max-width: 1300px) {
   .results .content-container {
     width: 90%; } }
+#subBut {
+  width: 318px; }
+
 .wrapperQ .instructions {
   font-size: 16px; }
   .wrapperQ .instructions input {
@@ -694,6 +702,8 @@ input {
   position: absolute;
   top: 64px;
   right: 48px; }
+  .wrapperQ .close-quiz-button img {
+    width: 40px; }
 .wrapperQ .open-modal {
   cursor: pointer; }
 .wrapperQ .pagecounter {
@@ -727,7 +737,7 @@ input {
   top: 220px;
   right: 69px; }
 
-.exit-quiz-modal {
+.exit-quiz-modal, .share-modal {
   display: none;
   background-color: rgba(0, 0, 0, 0.8);
   width: 100vw;
@@ -736,7 +746,7 @@ input {
   top: 0;
   left: 0;
   z-index: 1000; }
-  .exit-quiz-modal .modal-inner {
+  .exit-quiz-modal .modal-inner, .share-modal .modal-inner {
     background-color: #fff;
     width: 85%;
     max-width: 660px;
@@ -745,19 +755,19 @@ input {
     top: 50%;
     transform: translateY(-50%);
     padding: 96px 0; }
-    .exit-quiz-modal .modal-inner .button-large {
+    .exit-quiz-modal .modal-inner .button-large, .share-modal .modal-inner .button-large {
       margin: 0 auto;
       width: 65%; }
-    .exit-quiz-modal .modal-inner .close-modal {
+    .exit-quiz-modal .modal-inner .close-modal, .share-modal .modal-inner .close-modal {
       margin-top: 72px; }
-    .exit-quiz-modal .modal-inner .button-light {
+    .exit-quiz-modal .modal-inner .button-light, .share-modal .modal-inner .button-light {
       margin-top: 40px;
       border: 1px solid #000; }
-    .exit-quiz-modal .modal-inner .label, .exit-quiz-modal .modal-inner .info {
+    .exit-quiz-modal .modal-inner .label, .exit-quiz-modal .modal-inner .info, .share-modal .modal-inner .label, .share-modal .modal-inner .info {
       font-size: 16px;
       width: 65%;
       margin: 0 auto; }
-    .exit-quiz-modal .modal-inner .info {
+    .exit-quiz-modal .modal-inner .info, .share-modal .modal-inner .info {
       margin-top: 20px;
       line-height: 24px; }
 
@@ -777,6 +787,8 @@ input {
     max-width: none; }
     .share-modal form input:focus {
       outline: none; }
+.share-modal .thank-you {
+  display: none; }
 
 @media (max-width: 1451px) {
   .wrapperQ .navL {
@@ -815,24 +827,27 @@ input {
     .share-modal .close-share-modal-button img {
       width: 32px; }
 
-  .exit-quiz-modal .modal-inner {
+  #subBut {
+    width: 228px; }
+
+  .exit-quiz-modal .modal-inner, .share-modal .modal-inner {
     background-color: #fff;
     width: 85%;
     min-width: 290px;
     padding: 48px 0; }
-    .exit-quiz-modal .modal-inner .button-large {
+    .exit-quiz-modal .modal-inner .button-large, .share-modal .modal-inner .button-large {
       width: 80%;
       font-size: 12px; }
-    .exit-quiz-modal .modal-inner .close-modal {
+    .exit-quiz-modal .modal-inner .close-modal, .share-modal .modal-inner .close-modal {
       margin-top: 40px; }
-    .exit-quiz-modal .modal-inner .button-light {
+    .exit-quiz-modal .modal-inner .button-light, .share-modal .modal-inner .button-light {
       margin-top: 32px; }
-    .exit-quiz-modal .modal-inner .label, .exit-quiz-modal .modal-inner .info {
+    .exit-quiz-modal .modal-inner .label, .exit-quiz-modal .modal-inner .info, .share-modal .modal-inner .label, .share-modal .modal-inner .info {
       font-size: 14px;
       width: 80%;
       margin: 0 auto;
       text-align: center; }
-    .exit-quiz-modal .modal-inner .info {
+    .exit-quiz-modal .modal-inner .info, .share-modal .modal-inner .info {
       margin-top: 20px;
       line-height: 24px; }
 

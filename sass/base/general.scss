@@ -31,12 +31,17 @@ body {
 
 p {
   font-size: 24pt;
+  font-style: normal;
+  font-weight: normal;
 }
 
 label, .label {
-  font-size: 18pt;
+  font-size: 18px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 24px;
 }
 
 .label_small {
@@ -47,6 +52,8 @@ label, .label {
 h1, h2 {
   font-family: $heading-font;
   margin: 0;
+  font-style: normal;
+  font-weight: normal;
 }
 
 h1 {

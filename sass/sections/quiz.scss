@@ -57,6 +57,11 @@
   }
 }
 
+#subBut {
+  width: 318px;
+}
+
+
 .wrapperQ {
   .instructions {
     font-size: 16px;
@@ -77,6 +82,9 @@
     position: absolute;
     top: 64px;
     right: 48px;
+    img {
+      width: 40px;
+    }
   }
   .open-modal {
     cursor: pointer;
@@ -123,7 +131,7 @@
   }
 }
 
-.exit-quiz-modal {
+.exit-quiz-modal, .share-modal {
   display: none;
   background-color: $transparent-black;
   width: 100vw;
@@ -185,6 +193,12 @@
         outline: none;
       }
     }
+  }
+  // .model-inner {
+  //   min-height: 485px;
+  // }
+  .thank-you {
+    display: none;
   }
 }
 
@@ -261,7 +275,10 @@
       }
     }
   }
-  .exit-quiz-modal {
+  #subBut {
+    width: 228px;
+  }
+  .exit-quiz-modal, .share-modal {
     .modal-inner {
       background-color: $white;
       width: 85%;

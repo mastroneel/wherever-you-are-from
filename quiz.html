@@ -78,7 +78,7 @@
 
     function setQuestion(flagName)
       {
-        H='<p>...<br/>Before discovering your current State… <br>What is your Nationality?</p><br><form id="myForm" action="" method="POST" target="no-target"><INPUT TYPE="text" PlaceHolder="Your nationality" id="whereverfield" name="wherever"><INPUT TYPE="hidden" id="myflagfield" name="flag" value="'+flagName+'"><br><br><button id="subBut" class="button-large button-disabled" onclick="sendToGoogle();" style-"cursor:pointer;">START</button></form>'
+        H='<p>...<br/>Before we reveal your Current State… <br> What is your Nationality?</p><br><form id="myForm" action="" method="POST" target="no-target"><INPUT TYPE="text" PlaceHolder="Your nationality" id="whereverfield" name="wherever"><INPUT TYPE="hidden" id="myflagfield" name="flag" value="'+flagName+'"><br><br><button id="subBut" class="button-large button-disabled" onclick="sendToGoogle();" style-"cursor:pointer;">REVEAL MY STATE</button></form>'
         document.getElementById('Instructions').innerHTML=H
 
         $( "#whereverfield" ).keyup(function() {
@@ -118,22 +118,41 @@
         }
       }
 
+      $.getJSON('http://gd.geobytes.com/GetCityDetails?callback=?', function(data) {
+        console.log(JSON.stringify(data.geobytestitle, null, 2));
+        // ip = JSON.stringify(data.geobytestitle, null, 2);
+        ip = data.geobytestitle.toString();
+      });
+
   function sendToGoogle()
     {
       F=document.forms[0];
-      var baseURL='https://docs.google.com/forms/d/e/1FAIpQLSeSrk5O3OzgvC8Xse8zLXy8TR2GACMDkadiJq-OnydQH1qbmw/formResponse?';
+      F2=document.getElementById('emailForm');
+      // var baseURL='https://docs.google.com/forms/d/e/1FAIpQLSeSrk5O3OzgvC8Xse8zLXy8TR2GACMDkadiJq-OnydQH1qbmw/formResponse?';
+      var baseURL='https://docs.google.com/forms/d/e/1FAIpQLSe64fO2924kEOQMCyk5yKqKUoOenaGNPsgo71qmIn0-JzNQpQ/formResponse?';
       var submitRef='&submit=Submit';
-      whereverid='&entry.444671557='
-      flagid='&entry.522666394='
+      // whereverid='&entry.444671557='
+      whereverid='&entry.1517781560='
+      // flagid='&entry.522666394='
+      flagid='&entry.923370267='
+      ipcountry='&entry.1128085155='
+      emailinput='&entry.1077274859='
       wherever=F.wherever.value;
       flag=F.flag.value;
-      submitURL=(baseURL+whereverid+wherever+flagid+flag+submitRef);
+      country=ip
+      email=F2.email.value;
+      submitURL=(baseURL+whereverid+wherever+flagid+flag+ipcountry+country+emailinput+email+submitRef);
 
       // https://docs.google.com/forms/d/e/1FAIpQLSeSrk5O3OzgvC8Xse8zLXy8TR2GACMDkadiJq-OnydQH1qbmw/formResponse?&entry.444671557=fds&entry.522666394=BCCCCB&submit=Submit
 
+
+      // https://docs.google.com/spreadsheets/d/19nkbb5aKbapOld1R888cI7Z_b4TaaLxpPFa92IZcyEw/edit#gid=642024333
+
+
+
       F.action=submitURL;
       F.submit()
-      F.wherever.value='thank you';
+      // F.wherever.value='thank you';
       B=document.getElementById('subBut')
       B.style='visibility:hidden;'
       setFlag('symb2',flagName);
@@ -145,25 +164,71 @@
 
       console.log(F);
 
-      $.getJSON('http://gd.geobytes.com/GetCityDetails?callback=?', function(data) {
-        console.log(JSON.stringify(data.geobytestitle, null, 2));
-      });
 
-    }
 
-  function readGoogleData()
-    {
-      var baseURL='https://docs.google.com/spreadsheets/d/19nkbb5aKbapOld1R888cI7Z_b4TaaLxpPFa92IZcyEw/edit#gid=642024333';
-      var baseURL='https://spreadheets.google.com/feeds/list/d/19nkbb5aKbapOld1R888cI7Z_b4TaaLxpPFa92IZcyEw/1/public/basic?alt=json';
-      var sheetURL='https://docs.google.com/spreadsheets/d/19nkbb5aKbapOld1R888cI7Z_b4TaaLxpPFa92IZcyEw?alt=jsonp';
-      $.ajax({url:sheetURL,datatype:'jsonp',user:'anouksy@gmail.com',password:'ysabel87',crossDomain: true, xhrFields:{ withCredentials:true}})
+
+
     }
 
 
 
+    // function sendToEmail() {
+    //
+    //   var emailURL='https://docs.google.com/forms/d/e/1FAIpQLSe64fO2924kEOQMCyk5yKqKUoOenaGNPsgo71qmIn0-JzNQpQ/viewform?';
+    //
+    //   submitEmailUrl=(baseURL+whereverid+wherever+flagid+flag+ipcountry+country+emailinput+email+submitRef+'&edit2=2');
+    //
+    //   F2.action=submitEmailUrl;
+    //
+    //   console.log(F2);
+    //
+    //     F2.submit()            // &entry.1517781560=fffff&entry.923370267=BCCCCB&entry.1128085155=Taiwan&entry.1077274859&submit=Submit
+    // }
+
+
+  // function readGoogleData()
+  //   {
+  //     var baseURL='https://docs.google.com/spreadsheets/d/19nkbb5aKbapOld1R888cI7Z_b4TaaLxpPFa92IZcyEw/edit#gid=642024333';
+  //     // var baseURL='https://spreadheets.google.com/feeds/list/d/19nkbb5aKbapOld1R888cI7Z_b4TaaLxpPFa92IZcyEw/1/public/basic?alt=json';
+  //     var sheetURL='https://docs.google.com/spreadsheets/d/19nkbb5aKbapOld1R888cI7Z_b4TaaLxpPFa92IZcyEw?alt=jsonp';
+  //     $.ajax({url:sheetURL,datatype:'jsonp',user:'anouksy@gmail.com',password:'ysabel87',crossDomain: true, xhrFields:{ withCredentials:true}})
+  //   }
+
+    function readGoogleData()
+      {
+        var baseURL='https://docs.google.com/spreadsheets/d/1JQzb7wZK-qX2t14bYfBsn23It7k8Qk9K-7G7pTkKJ5c/edit#gid=2113068876';
+        // var baseURL='https://spreadheets.google.com/feeds/list/d/19nkbb5aKbapOld1R888cI7Z_b4TaaLxpPFa92IZcyEw/1/public/basic?alt=json';
+        var sheetURL='https://docs.google.com/spreadsheets/d/1JQzb7wZK-qX2t14bYfBsn23It7k8Qk9K-7G7pTkKJ5c?alt=jsonp';
+        $.ajax({url:sheetURL,datatype:'jsonp',user:'anouksy@gmail.com',password:'ysabel87',crossDomain: true, xhrFields:{ withCredentials:true}})
+      }
 
 
 
+
+//
+// https://docs.google.com/forms/d/e/1FAIpQLSe64fO2924kEOQMCyk5yKqKUoOenaGNPsgo71qmIn0-JzNQpQ/viewform
+//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// https://docs.google.com/forms/d/e/1FAIpQLSe64fO2924kEOQMCyk5yKqKUoOenaGNPsgo71qmIn0-JzNQpQ/formResponse?&entry.1517781560=fffff&entry.923370267=BCCCCB&entry.1128085155=Taiwan&entry.1077274859=&submit=Submit
+// https://docs.google.com/forms/d/e/1FAIpQLSe64fO2924kEOQMCyk5yKqKUoOenaGNPsgo71qmIn0-JzNQpQ/formResponse?&entry.1517781560=ddddd&entry.923370267=BACCBA&entry.1128085155=Taiwan&entry.1077274859=&submit=Submit
+//
+//
+// https://docs.google.com/forms/d/e/1FAIpQLSe64fO2924kEOQMCyk5yKqKUoOenaGNPsgo71qmIn0-JzNQpQ/viewform?&entry.1517781560=fffff&entry.923370267=BCCCCB&entry.1128085155=Taiwan&entry.1077274859&submit=Submit&edit2=2_ABaOnucgzI7Xij58wBQ0bLsxa8WhtEJxYNazUKjkkDepU_H99X-75I3OEcRPL17LfyklDjY
+// https://docs.google.com/forms/d/e/1FAIpQLSe64fO2924kEOQMCyk5yKqKUoOenaGNPsgo71qmIn0-JzNQpQ/viewform?&entry.1517781560=ddddd&entry.923370267=ACACBB&entry.1128085155=Taiwan&entry.1077274859&submit=Submit&edit2=2_ABaOnueWE-jJHuh418U0j8E4Hw6neMVxDlt9_lfrmYsB4jrKT06V5nd7AoV2JA_gB-ai07o
   </script>
 </head>
 <body>
@@ -221,7 +286,7 @@
         <div class="col-xs-12">
           <div id="Instructions" class="instructions">
             <p class="label">YOUR CURRENT STATE</p>
-            <p class="instructions instructions-desktop">On each of the following screens, select one of the presented shapes.  Follow your gut feeling…</p>
+            <p class="instructions instructions-desktop">On each of the following screens, select one of the presented shapes.  <br>Follow your gut feeling…</p>
             <p class="instructions instructions-mobile">
               On each of the following screens,  select one of the presented shapes.
             </p>
@@ -256,7 +321,7 @@
 
     <div class="finding-results center">
       <div class="finding-results-inner">
-        <img src="img/logo-white.png" />
+        <img src="img/logo-white.svg" />
         <p class="label">
           FINDING your current state…
         </p>
@@ -288,22 +353,31 @@
   <iframe src="#" id="no-target" name="no-target" style="visibility:hidden"></iframe>
   <!-- </div> -->
 
-  <div class="exit-quiz-modal share-modal">
+  <div class="share-modal">
     <div class="modal-inner">
       <div class="close-share-modal-button">
         <img src="img/close.svg" />
       </div>
-      <p class="label">
-        Share your current state
-      </p>
-      <p class="info">
-        Send it to your own email address,<br>
-         or share it with your friends!
-      </p>
-      <form>
-        <input type="email" placeholder="Email address"/>
-        <input type="submit" class="button-disabled button-large share-submit" value="Send to email">
-      </form>
+      <div class="share-modal-content">
+        <p class="label">
+          Share your current state
+        </p>
+        <p class="info">
+          Send it to your own email address,<br>
+           or share it with your friends!
+        </p>
+        <form id="emailForm">
+          <input type="email" name="email" placeholder="Email address"/>
+          <input type="submit" class="button-disabled button-large share-submit" value="Send to email" onclick="sendToGoogle();">
+        </form>
+      </div>
+      <div class="thank-you">
+        <p class="info">
+          Email has been sent. Thank you.
+        </p>
+        <br>
+        <button class="button-dark button-large close-sent-button">Close</button>
+      </div>
     </div>
   </div>
 
@@ -314,7 +388,7 @@
       <div class="row">
         <div class="col-xs-12 col-sm-5">
           <a class="home-link" href="#top-page">
-            <img src="img/logo-white.png" />
+            <img src="img/logo-white.svg" />
           </a>
           <a class="home-link" href="#top-page">
             <span>Wherever</span>
@@ -334,7 +408,7 @@
     <!-- mobile navigation -->
     <nav class="nav-mobile">
       <div class="menu-trigger">
-        <img src="img/logo-white.png" />
+        <img src="img/logo-white.svg" />
       </div>
       <div class="retake-button">
         <a class="nav-link button-small button-secondary" href="quiz.html">Retake Test</a>
@@ -446,8 +520,13 @@
     $('.share-modal').fadeIn();
   });
 
-  $('.close-share-modal-button').click(function() {
+  $('.close-share-modal-button, .close-sent-button').click(function() {
     $('.share-modal').fadeOut();
+  });
+
+  $('.share-submit').click(function() {
+    $('.share-modal-content').css('display', 'none');
+    $('.thank-you').css('display', 'block');
   });
 
   $( ".share-modal form input" ).keyup(function() {
@@ -458,6 +537,8 @@
       $('.share-submit').addClass('button-disabled');
     }
   });
+
+
 
 
 

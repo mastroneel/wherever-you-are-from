@@ -22,7 +22,7 @@
           <div class="row">
             <div class="col-xs-12 col-sm-6">
               <a class="home-link" href="#top-page">
-                <img src="img/logo-white.png" />
+                <img src="img/logo-white.svg" />
               </a>
               <a class="home-link" href="#top-page">
                 <span>Wherever</span>
@@ -41,7 +41,7 @@
         <!-- mobile navigation -->
         <nav class="nav-mobile">
           <div class="menu-trigger">
-            <img src="img/logo-white.png" />
+            <img src="img/logo-white.svg" />
           </div>
 
           <div class="slide-menu">
@@ -2034,6 +2034,20 @@
     }
 
 
+
+    // about section background fade
+
+    $(document).ready(function(){
+        $(window).scroll(function(){
+            if ($(window).scrollTop() > 850){
+              // $('.about').css('background', 'linear-gradient(rgba(0, 0, 0, 8), rgba(0, 0, 0, 0.8)');
+              $('.about').addClass('dark-bg');
+            } else {
+              // $('.about').css('background', 'linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)');
+              $('.about').removeClass('dark-bg');
+            }
+        });
+      });
 
 
     // bottom nav fade in/out
