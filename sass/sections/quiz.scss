@@ -20,6 +20,9 @@
 
 .results {
   display: none;
+  .share-button {
+    margin-top: 56px;
+  }
   .button-small {
     display: inline-block;
     height: 28px;
@@ -41,6 +44,10 @@
     top: 50%;
     transform: translateY(-50%);
   }
+}
+
+.symb img:hover {
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 #bigFlag {
@@ -68,6 +75,7 @@
     input {
       max-width: none;
       width: 70%;
+      font-size: 24px;
       &:focus {
         outline: none;
       }
@@ -128,6 +136,9 @@
     position: absolute;
     top: 220px;
     right: 69px;
+  }
+  .input-instructions {
+    margin-top: -16px;
   }
 }
 

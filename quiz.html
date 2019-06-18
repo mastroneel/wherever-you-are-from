@@ -7,61 +7,256 @@
   <link rel="stylesheet" href="css/app.css">
   <link rel="icon" type="image/png" href="img/favicon.png">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- <script
+  src="https://code.jquery.com/jquery-1.8.3.min.js"
+  integrity="sha256-YcbK69I5IXQftf/mYD8WY0/KmEDCv1asggHpJk1trM8="
+  crossorigin="anonymous"></script> -->
 
   <script type="text/javascript">
       var qNumber=0
       var flagName=''
       var imgDir='img/flags/';
+      var imgDir2='img/';
+      var attributes = [];
 
-      function setQuestionFlags(but)
-      {
-        if (but!=null)
-        {
+
+
+
+
+
+
+      function setQuestionFlags(but) {
+        if (but!=null) {
           S=String(but.innerHTML)
           if (S=='') {return false}
           S=S.substring(S.length-7,S.length-6)
           flagName=flagName+S
           document.getElementById('pagecounter').innerText=qNumber+1+' / 6'
-        if (qNumber==6)
-          {
+          if (qNumber==6) {
             questionFlag('','',1)
             questionFlag('','',2)
             questionFlag('','',3)
             setQuestion(flagName)
           }
-          if (qNumber==7)
-            {
+          if (qNumber==7) {
               return false
             }
         }
         qNumber=qNumber+1
+
+        // function goBack() {
+        //     qNumber=qNumber-1
+        // }
+
+
+
+
+
+
         questionFlag(qNumber,'A',1)
+
+
+
+
+
+        // $( ".navL" ).live( "click", function(e) {
+
+          // $('.back-home').click(function() {
+          //   $('.exit-quiz-modal').fadeIn();
+          // });
+          //
+          // $('.back-to-1').click(function() {
+          //     qNumber=1
+          //     flagName = flagName.slice(0, flagName.length-1);
+          //     console.log(qNumber);
+          //     console.log(flagName);
+          //     questionFlag(qNumber,'',2)
+          //     questionFlag(qNumber,'B',3)
+          //     $('.navL').css('display', 'none');
+          //     $('.back-home').css('display', 'block');
+          //     // $('.navL').removeClass('back-to-1');
+          //     // $('.navL').addClass('back-home');
+          // });
+          //
+          // $('.back-to-2').click(function() {
+          //    qNumber=2
+          //    flagName = flagName.slice(0, flagName.length-1);
+          //    console.log(qNumber);
+          //    console.log(flagName);
+          //    questionFlag(qNumber,'A',1)
+          //    questionFlag(qNumber,'B',2)
+          //    questionFlag(qNumber,'C',3)
+          //    $('.navL').css('display', 'none');
+          //    $('.back-to-1').css('display', 'block');
+          //     // $('.navL').removeClass('back-to-2');
+          //     // $('.navL').addClass('back-to-1');
+          // });
+          //
+          // $('.back-to-3').click(function() {
+          //    qNumber=3
+          //    // flagName = flagName.slice(0, flagName.length-1);
+          //    console.log(qNumber);
+          //    console.log(flagName);
+          //    questionFlag(qNumber,'B',2)
+          //    questionFlag(qNumber,'C',3)
+          //    $('.navL').css('display', 'none');
+          //    $('.back-to-2').css('display', 'block');
+          //     // $('.navL').removeClass('back-to-3');
+          //     // $('.navL').addClass('back-to-2');
+          // });
+          //
+          // $('.back-to-4').click(function() {
+          //    qNumber=4
+          //    // flagName = flagName.slice(0, flagName.length-1);
+          //    console.log(qNumber);
+          //    console.log(flagName);
+          //    questionFlag(qNumber,'B',2)
+          //    questionFlag(qNumber,'C',3)
+          //    $('.navL').css('display', 'none');
+          //    $('.back-to-3').css('display', 'block');
+          //     // $('.navL').removeClass('back-to-4');
+          //     // $('.navL').addClass('back-to-3');
+          // });
+          //
+          // $('.back-to-5').click(function() {
+          //    qNumber=5
+          //    // flagName = flagName.slice(0, flagName.length-1);
+          //    console.log(qNumber);
+          //    console.log(flagName);
+          //    questionFlag(qNumber,'B',2)
+          //    questionFlag(qNumber,'C',3)
+          //    $('.navL').css('display', 'none');
+          //    $('.back-to-4').css('display', 'block');
+          //     // $('.navL').removeClass('back-to-5');
+          //     // $('.navL').addClass('back-to-4');
+          // });
+          //
+          // $('.back-to-6').click(function() {
+          //    qNumber=6
+          //    // flagName = flagName.slice(0, flagName.length-1);
+          //    console.log(qNumber);
+          //    console.log(flagName);
+          //    questionFlag(qNumber,'',2)
+          //    questionFlag(qNumber,'B',3)
+          //    $('.navL').css('display', 'none');
+          //    $('.back-to-5').css('display', 'block');
+          //     // $('.navL').removeClass('back-to-6');
+          //     // $('.navL').addClass('back-to-5');
+          // });
+
+        // });
+
+        // $( ".navL" ).live( "click", function() {
+        //   if (qNumber==1){
+        //       // qNumber=0
+        //       // $('.navL').click(function() {
+        //       //   $('.exit-quiz-modal').fadeIn();
+        //       // });
+        //   }
+        //
+        //   if (qNumber==2){
+        //       qNumber=1
+        //       flagName = flagName.slice(0, flagName.length-1);
+        //       console.log(qNumber);
+        //       console.log(flagName);
+        //       questionFlag(qNumber,'',2)
+        //       questionFlag(qNumber,'B',3)
+        //
+        //   }
+        //   if (qNumber==3){
+        //       qNumber=2
+        //       flagName = flagName.slice(0, flagName.length-1);
+        //       console.log(qNumber);
+        //       console.log(flagName);
+        //       questionFlag(qNumber,'B',2)
+        //       questionFlag(qNumber,'C',3)
+        //
+        //   }
+        //
+        // });
+
+
+        // $("img[src='img/1_A.png']").click(function() {
+        //
+        // });
+
+
         if (qNumber==1){
           $('.quiz-dot').css('background', 'transparent');
           $('.quiz-dot-1').css('background', 'black');
+          // $('.navL').css('display', 'none');
+          // $('.back-home').css('display', 'block');
+          // $('.navL').click(function() {
+          //   qNumber=0
+          //   $('.exit-quiz-modal').fadeIn();
+          // });
+          // $('.navL').click(function() {
+          //   $('.exit-quiz-modal').fadeIn();
+          // });
         }
         if (qNumber==2){
           $('.quiz-dot').css('background', 'transparent');
           $('.quiz-dot-2').css('background', 'black');
+          // $('.navL').css('display', 'none');
+          // $('.back-to-1').css('display', 'block');
+          // $('.navL').removeClass('back-home');
+          // $('.navL').addClass('back-to-1');
+          // $('.navL').click(function() {
+          //   qNumber=1
+          //   flagName = flagName.slice(0, flagName.length-1);
+          //   console.log(qNumber);
+          //   console.log(flagName);
+          //   questionFlag(qNumber,'',2)
+          //   questionFlag(qNumber,'B',3)
+          // });
         }
         if (qNumber==3){
           $('.quiz-dot').css('background', 'transparent');
           $('.quiz-dot-3').css('background', 'black');
+          // $('.navL').css('display', 'none');
+          // $('.back-to-2').css('display', 'block');
+          // $('.navL').removeClass('back-to-1');
+          // $('.navL').addClass('back-to-2');
+          // $('.navL').click(function() {
+          //   qNumber=2
+          //   flagName = flagName.slice(0, flagName.length-1);
+          //   console.log(qNumber);
+          //   console.log(flagName);
+          //   questionFlag(qNumber,'A',1)
+          //   questionFlag(qNumber,'B',2)
+          //   questionFlag(qNumber,'C',3)
+          // });
         }
         if (qNumber==4){
           $('.quiz-dot').css('background', 'transparent');
           $('.quiz-dot-4').css('background', 'black');
+          // $('.navL').css('display', 'none');
+          // $('.back-to-3').css('display', 'block');
+          // $('.navL').removeClass('back-to-2');
+          // $('.navL').addClass('back-to-3');
         }
         if (qNumber==5){
           $('.quiz-dot').css('background', 'transparent');
           $('.quiz-dot-5').css('background', 'black');
+          // $('.navL').css('display', 'none');
+          // $('.back-to-4').css('display', 'block');
+          // $('.navL').removeClass('back-to-3');
+          // $('.navL').addClass('back-to-4');
         }
         if (qNumber==6){
           $('.quiz-dot').css('background', 'transparent');
           $('.quiz-dot-6').css('background', 'black');
+          // $('.navL').css('display', 'none');
+          // $('.back-to-5').css('display', 'block');
+          // $('.navL').removeClass('back-to-4');
+          // $('.navL').addClass('back-to-5');
         }
         if (qNumber>=7){
-          $('.navL, .pagecounter, .quiz-dots, .quiz-flag, #symb1, #symb2, #symb3, .instructions-mobile.top-margin').css('display', 'none');
+          $('.pagecounter, .quiz-dots, .quiz-flag, #symb1, #symb2, #symb3, .instructions-mobile.top-margin').css('display', 'none');
+          // $('.navL').css('display', 'none');
+          // $('.back-to-6').css('display', 'block');
+          // $('.navL').removeClass('back-to-5');
+          // $('.navL').addClass('back-to-6');
         }
         if (qNumber==1 | qNumber==6 )
         {
@@ -73,12 +268,13 @@
         questionFlag(qNumber,'B',2)
         questionFlag(qNumber,'C',3)
         }
+
       }
 
 
     function setQuestion(flagName)
       {
-        H='<p>...<br/>Before we reveal your Current State… <br> What is your Nationality?</p><br><form id="myForm" action="" method="POST" target="no-target"><INPUT TYPE="text" PlaceHolder="Your nationality" id="whereverfield" name="wherever"><INPUT TYPE="hidden" id="myflagfield" name="flag" value="'+flagName+'"><br><br><button id="subBut" class="button-large button-disabled" onclick="sendToGoogle();" style-"cursor:pointer;">REVEAL MY STATE</button></form>'
+        H='<p class="instructions input-instructions">...<br/>Before we reveal your Current State… <br> What is your Nationality?</p><br><form id="myForm" action="" method="POST" target="no-target"><INPUT TYPE="text" PlaceHolder="Your nationality" id="whereverfield" name="wherever"><INPUT TYPE="hidden" id="myflagfield" name="flag" value="'+flagName+'"><br><br><button id="subBut" class="button-large button-disabled" onclick="sendToGoogle();" style-"cursor:pointer;">REVEAL MY STATE</button></form>'
         document.getElementById('Instructions').innerHTML=H
 
         $( "#whereverfield" ).keyup(function() {
@@ -113,7 +309,7 @@
         }
         else
         {
-          F=imgDir+n+'_'+Letter+Typ
+          F=imgDir2+n+'_'+Letter+Typ
           document.getElementById('symb'+pos).innerHTML='<img class="quiz-flag" src="'+F+'">'
         }
       }
@@ -124,8 +320,11 @@
         ip = data.geobytestitle.toString();
       });
 
+
   function sendToGoogle()
     {
+
+      $('.navL').css('display', 'none');
       F=document.forms[0];
       F2=document.getElementById('emailForm');
       // var baseURL='https://docs.google.com/forms/d/e/1FAIpQLSeSrk5O3OzgvC8Xse8zLXy8TR2GACMDkadiJq-OnydQH1qbmw/formResponse?';
@@ -137,11 +336,14 @@
       flagid='&entry.923370267='
       ipcountry='&entry.1128085155='
       emailinput='&entry.1077274859='
+      // attributesinput='&entry.1822485377='
+
+
       wherever=F.wherever.value;
       flag=F.flag.value;
       country=ip
       email=F2.email.value;
-      submitURL=(baseURL+whereverid+wherever+flagid+flag+ipcountry+country+emailinput+email+submitRef);
+
 
       // https://docs.google.com/forms/d/e/1FAIpQLSeSrk5O3OzgvC8Xse8zLXy8TR2GACMDkadiJq-OnydQH1qbmw/formResponse?&entry.444671557=fds&entry.522666394=BCCCCB&submit=Submit
 
@@ -150,8 +352,9 @@
 
 
 
-      F.action=submitURL;
-      F.submit()
+
+
+
       // F.wherever.value='thank you';
       B=document.getElementById('subBut')
       B.style='visibility:hidden;'
@@ -164,9 +367,87 @@
 
       console.log(F);
 
+      console.log($('.bigFlag img').attr('src').charAt(10));
 
 
+      var firstChar = $('.bigFlag img').attr('src').charAt(10);
+      var secondChar = $('.bigFlag img').attr('src').charAt(11);
+      var thirdChar = $('.bigFlag img').attr('src').charAt(12);
+      var fourthChar = $('.bigFlag img').attr('src').charAt(13);
+      var fifthChar = $('.bigFlag img').attr('src').charAt(14);
+      var sixthChar = $('.bigFlag img').attr('src').charAt(15);
 
+      if (firstChar == 'A') {
+        attributes.push('Introverted');
+        console.log(attributes);
+      }
+
+      if (firstChar == 'B') {
+        attributes.push('Extroverted');
+        console.log(attributes);
+      }
+
+      if (secondChar == 'A') {
+        attributes.push('individualistic');
+        console.log(attributes);
+      }
+
+      if (secondChar == 'C') {
+        attributes.push('collective');
+        console.log(attributes);
+      }
+
+      if (thirdChar == 'A') {
+        attributes.push('agreeable');
+        console.log(attributes);
+      }
+
+      if (thirdChar == 'C') {
+        attributes.push('hostile');
+        console.log(attributes);
+      }
+
+      if (fourthChar == 'A') {
+        attributes.push('closed to experiences');
+        console.log(attributes);
+      }
+
+      if (fourthChar == 'C') {
+        attributes.push('open to experiences');
+        console.log(attributes);
+      }
+
+      if (fifthChar == 'A') {
+        attributes.push('stable');
+        console.log(attributes);
+      }
+
+      if (fifthChar == 'C') {
+        attributes.push('neurotic');
+        console.log(attributes);
+      }
+
+      if (sixthChar == 'A') {
+        attributes.push('conscientious');
+        console.log(attributes);
+      }
+
+      if (sixthChar == 'B') {
+        attributes.push('spontaneous');
+        console.log(attributes);
+      }
+
+
+      document.getElementById('currentState').innerHTML=attributes.join(', ');
+
+
+      // attributesvalue=document.getElementById('currentState').innerHTML;
+
+      // submitURL=(baseURL+whereverid+wherever+flagid+flag+ipcountry+country+emailinput+email+attributesinput+attributesvalue+submitRef);
+      submitURL=(baseURL+whereverid+wherever+flagid+flag+ipcountry+country+emailinput+email+submitRef);
+
+      F.action=submitURL;
+      F.submit()
 
     }
 
@@ -262,9 +543,37 @@
 
 
 
-      <div class="navL" onclick="setFlags()">
+      <!-- <div class="navL" onclick="setFlags()">
         <img src="img/back.svg" onclick="goBack()">
+      </div> -->
+
+      <div class="navL back-home">
+        <img src="img/back.svg" >
       </div>
+
+      <!-- <div class="navL back-to-1">
+        <img src="img/back.svg" >
+      </div>
+
+      <div class="navL back-to-2">
+        <img src="img/back.svg" >
+      </div>
+
+      <div class="navL back-to-3">
+        <img src="img/back.svg" >
+      </div>
+
+      <div class="navL back-to-4">
+        <img src="img/back.svg" >
+      </div>
+
+      <div class="navL back-to-5">
+        <img src="img/back.svg" >
+      </div>
+
+      <div class="navL back-to-6">
+        <img src="img/back.svg" >
+      </div> -->
 
       <div id="pagecounter" class="pagecounter">
         1 / 6
@@ -387,10 +696,10 @@
     <nav class="nav-desktop">
       <div class="row">
         <div class="col-xs-12 col-sm-5">
-          <a class="home-link" href="#top-page">
+          <a class="home-link" href="index.html#top-page">
             <img src="img/logo-white.svg" />
           </a>
-          <a class="home-link" href="#top-page">
+          <a class="home-link" href="index.html#top-page">
             <span>Wherever</span>
           </a>
         </div>
@@ -465,7 +774,7 @@
               <p class="label">
                 YOUR CURRENT STATE iS
               </p>
-              <p class="current-state" id="currentState">
+              <p class="current-state body" id="currentState">
 
               </p>
               <a href="#" class="share-button button-large button-light">
@@ -537,6 +846,8 @@
       $('.share-submit').addClass('button-disabled');
     }
   });
+
+
 
 
 

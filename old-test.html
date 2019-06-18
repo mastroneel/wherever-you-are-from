@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Wherever you are from </title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <style type="text/css">
+  body {
+    width: 99%;
+  background-color: #FFFFFFF;
+  padding:0px;
+
+  }
+
+  img {width: 100%; height: auto;}
+
+  .bigFlag {
+     position: absolute; z-index: -1; opacity: 0.0; filter: alpha(opacity = 0); top: 0; bottom: 0; left: 0; right: 0; width: 100%; height: 100%; background-color: black; color: White; text-align:center;}
+
+  .bigFlag img {height:100%; width:auto;}
+  .wrapper {
+    padding:10px;
+
+    width: 90%;
+    display: grid;
+    grid-gap:50px;
+    grid-template-columns: 1fr 3fr 3fr 3fr 3fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+  }
+  .wrapperQ {
+    width: 100%;
+    display: grid;
+    grid-gap:50px;
+    align-items: middle;
+    grid-template-columns: 1fr 4fr 4fr 4fr 1fr;
+    grid-template-rows: 4fr 4fr 1fr 1fr;
+  }
+
+  .goTest {color: #FFFFFF; cursor:pointer;}
+  .navL{
+    text-align: center;
+    align-self: center;
+    grid-column: 1 / 2;
+    grid-row: 1 / 5;}
+  .navR{
+    text-align: center;
+    align-self: center;
+    grid-column: 5 / 6;
+    grid-row: 1 / 5}
+
+.navL img {width:35px }
+.navR img {width:35px }
+.flag {grid-column-align:center; width:100%;}
+.symb {width:100%; cursor:pointer;}
+.about {
+  text-align:center;
+  grid-column:2/5;
+  grid-row:4/5;}
+
+  .instructions {
+    grid-column:2/5;
+    grid-row:1/2;
+  }
+
+.pagecounter{
+    vertical-align: bottom;
+    grid-column:2/5;
+    grid-row:3/4;
+
+}
+  </style>
+  <script type="text/javascript">
+      var qNumber=0
+      var flagName=''
+      var imgDir='_images/';
+
+      function setQuestionFlags(but)
+      {
+        if (but!=null)
+        {
+          S=String(but.innerHTML)
+          if (S=='') {return false}
+          S=S.substring(S.length-7,S.length-6)
+          flagName=flagName+S
+          document.getElementById('pagecounter').innerText=qNumber+1+' / 7'
+        if (qNumber==6)
+          {
+            questionFlag('','',1)
+            questionFlag('','',2)
+            questionFlag('','',3)
+            setQuestion(flagName)
+            return false
+          }
+        }
+        qNumber=qNumber+1
+        questionFlag(qNumber,'A',1)
+        if (qNumber==1 | qNumber==6 )
+        {
+        questionFlag(qNumber,'',2)
+        questionFlag(qNumber,'B',3)
+        }
+        else
+        {
+        questionFlag(qNumber,'B',2)
+        questionFlag(qNumber,'C',3)
+        }
+      }
+
+    function setQuestion(flagName)
+      {
+        H='<h1>Where Ever you are from</h1><p>this is a placeholder</p><br><form id="myForm" action="" method="POST" target="no-target"><INPUT TYPE="text" PlaceHolder="Wherever you are from?" id="whereverfield" name="wherever"><INPUT TYPE="hidden" id="myflagfield" name="flag" value="'+flagName+'"><br><br><button id="subBut" onclick="sendToGoogle();" style-"cursor:pointer;">Submit</button></form>'
+        document.getElementById('Instructions').innerHTML=H
+      }
+
+    function setFlag(tag,Fname)
+      {
+       document.getElementById(tag).innerHTML='<img src="'+imgDir+Fname+'.png'+'">'
+      }
+
+    function questionFlag(n,Letter,pos)
+      {
+        Typ='.jpg'
+        if (Letter=='')
+        {
+         document.getElementById('symb'+pos).innerHTML=''
+        }
+        else
+        {
+          F=imgDir+n+'_'+Letter+Typ
+          document.getElementById('symb'+pos).innerHTML='<img src="'+F+'">'
+        }
+      }
+
+  function sendToGoogle()
+    {
+      F=document.forms[0];
+      var baseURL='https://docs.google.com/forms/d/e/1FAIpQLSeSrk5O3OzgvC8Xse8zLXy8TR2GACMDkadiJq-OnydQH1qbmw/formResponse?';
+      var submitRef='&submit=Submit';
+      whereverid='&entry.444671557='
+      flagid='&entry.522666394='
+      wherever=F.wherever.value;
+      flag=F.flag.value;
+      submitURL=(baseURL+whereverid+wherever+flagid+flag+submitRef);
+      F.action=submitURL;
+      F.submit()
+      F.wherever.value='thank you';
+      B=document.getElementById('subBut')
+      B.style='visibility:hidden;'
+      setFlag('symb2',flagName);
+      document.getElementById('pagecounter').innerHTML='You have now completed your personnal flag <a href="index.html?wherever='+wherever+'&flag='+flag+'">home</a>';
+      setFlag('bigflag',flagName);
+      BF=document.getElementById('bigflag');
+      BF.style.zIndex=3;
+      BF.style.opacity=1
+
+    }
+
+  function readGoogleData()
+    {
+      var baseURL='https://docs.google.com/spreadsheets/d/19nkbb5aKbapOld1R888cI7Z_b4TaaLxpPFa92IZcyEw/edit#gid=642024333';
+      var baseURL='https://spreadheets.google.com/feeds/list/d/19nkbb5aKbapOld1R888cI7Z_b4TaaLxpPFa92IZcyEw/1/public/basic?alt=json';
+      var sheetURL='https://docs.google.com/spreadsheets/d/19nkbb5aKbapOld1R888cI7Z_b4TaaLxpPFa92IZcyEw?alt=jsonp';
+      $.ajax({url:sheetURL,datatype:'jsonp',user:'anouksy@gmail.com',password:'ysabel87',crossDomain: true, xhrFields:{ withCredentials:true}})
+    }
+
+  </script>
+</head>
+<body>
+  <div class="wrapperQ">
+    <div class="navL" onclick="setFlags()">
+      <img src="_images/NA_Black.png" onclick="goBack()">
+    </div>
+    <div id="Instructions" class="instructions">
+      <h1> Instructions</h1>
+      <p>this s a place holder text that will tell you what to do : </p>
+    </div>
+    <div id="symb1" class="symb" onclick="setQuestionFlags(this)">
+    </div>
+    <div id="symb2" class="symb" onclick="setQuestionFlags(this)">
+    </div>
+    <div id="symb3" class="symb" onclick="setQuestionFlags(this)">
+    </div>
+    <div id="pagecounter" class="pagecounter">
+      1 / 7
+    </div>
+    <div id="about" class="about">
+      about
+    </div>
+    <div class="navR">
+      <img src="_images/SI_Black.png" onclick="goBack()">
+    </div>
+  <iframe src="#" id="no-target" name="no-target" style="visibility:hidden"></iframe>
+  </div>
+  <div id="bigflag" class="bigFlag">
+  </div>
+</body>
+  <script type="text/javascript">
+//  readGoogleData();
+  setQuestionFlags()
+  </script>
+</html>

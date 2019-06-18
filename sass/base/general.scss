@@ -25,12 +25,19 @@ body, p, label, .label, a {
   font-family: $main-font;
 }
 
-body {
-  font-size: 16pt;
+p {
+  line-height: 40px;
+}
+
+body, .body {
+  font-size: 16px;
+  line-height: 24px;
+  font-style: normal;
+  font-weight: normal;
 }
 
 p {
-  font-size: 24pt;
+  font-size: 24px;
   font-style: normal;
   font-weight: normal;
 }
@@ -45,7 +52,7 @@ label, .label {
 }
 
 .label_small {
-  font-size: 12pt;
+  font-size: 12px;
   letter-spacing: 0.2em;
 }
 
@@ -57,11 +64,13 @@ h1, h2 {
 }
 
 h1 {
-  font-size: 48pt;
+  font-size: 48px;
+  line-height: 64px;
 }
 
 h2 {
-  font-size: 18pt;
+  font-size: 18px;
+  line-height: 24px;
 }
 
 .right {
@@ -249,5 +258,21 @@ input {
     height: 8px;
     width: 8px;
     margin-top: 8px;
+  }
+  h1 {
+    font-size: 24px;
+    line-height: 32px;
+  }
+  p {
+    font-size: 14px;
+    line-height: 22px;
+  }
+  body, .body {
+    font-size: 10px;
+    line-height: 16px;
+  }
+  .label, label {
+    font-size: 12px;
+    line-height: 14px;
   }
 }
