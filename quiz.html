@@ -24,8 +24,11 @@
 
 
 
-
       function setQuestionFlags(but) {
+
+
+
+
         if (but!=null) {
           S=String(but.innerHTML)
           if (S=='') {return false}
@@ -38,7 +41,7 @@
             questionFlag('','',3)
             setQuestion(flagName)
           }
-          if (qNumber==7) {
+          if (qNumber==8) {
               return false
             }
         }
@@ -50,7 +53,7 @@
 
 
 
-
+        console.log(flagName);
 
 
         questionFlag(qNumber,'A',1)
@@ -58,205 +61,53 @@
 
 
 
+        $('.navL').click(function() {
+          qNumber=0
+          qNumber=qNumber+1
 
-        // $( ".navL" ).live( "click", function(e) {
+          console.log(qNumber);
+          console.log(flagName);
+          questionFlag(qNumber,'A',1)
+          questionFlag(qNumber,'',2)
+          questionFlag(qNumber,'B',3)
+          $('.quiz-dot').css('background', 'transparent');
+          $('.quiz-dot-1').css('background', 'black');
+          $('#Instructions2').css('display', 'none');
 
-          // $('.back-home').click(function() {
-          //   $('.exit-quiz-modal').fadeIn();
-          // });
-          //
-          // $('.back-to-1').click(function() {
-          //     qNumber=1
-          //     flagName = flagName.slice(0, flagName.length-1);
-          //     console.log(qNumber);
-          //     console.log(flagName);
-          //     questionFlag(qNumber,'',2)
-          //     questionFlag(qNumber,'B',3)
-          //     $('.navL').css('display', 'none');
-          //     $('.back-home').css('display', 'block');
-          //     // $('.navL').removeClass('back-to-1');
-          //     // $('.navL').addClass('back-home');
-          // });
-          //
-          // $('.back-to-2').click(function() {
-          //    qNumber=2
-          //    flagName = flagName.slice(0, flagName.length-1);
-          //    console.log(qNumber);
-          //    console.log(flagName);
-          //    questionFlag(qNumber,'A',1)
-          //    questionFlag(qNumber,'B',2)
-          //    questionFlag(qNumber,'C',3)
-          //    $('.navL').css('display', 'none');
-          //    $('.back-to-1').css('display', 'block');
-          //     // $('.navL').removeClass('back-to-2');
-          //     // $('.navL').addClass('back-to-1');
-          // });
-          //
-          // $('.back-to-3').click(function() {
-          //    qNumber=3
-          //    // flagName = flagName.slice(0, flagName.length-1);
-          //    console.log(qNumber);
-          //    console.log(flagName);
-          //    questionFlag(qNumber,'B',2)
-          //    questionFlag(qNumber,'C',3)
-          //    $('.navL').css('display', 'none');
-          //    $('.back-to-2').css('display', 'block');
-          //     // $('.navL').removeClass('back-to-3');
-          //     // $('.navL').addClass('back-to-2');
-          // });
-          //
-          // $('.back-to-4').click(function() {
-          //    qNumber=4
-          //    // flagName = flagName.slice(0, flagName.length-1);
-          //    console.log(qNumber);
-          //    console.log(flagName);
-          //    questionFlag(qNumber,'B',2)
-          //    questionFlag(qNumber,'C',3)
-          //    $('.navL').css('display', 'none');
-          //    $('.back-to-3').css('display', 'block');
-          //     // $('.navL').removeClass('back-to-4');
-          //     // $('.navL').addClass('back-to-3');
-          // });
-          //
-          // $('.back-to-5').click(function() {
-          //    qNumber=5
-          //    // flagName = flagName.slice(0, flagName.length-1);
-          //    console.log(qNumber);
-          //    console.log(flagName);
-          //    questionFlag(qNumber,'B',2)
-          //    questionFlag(qNumber,'C',3)
-          //    $('.navL').css('display', 'none');
-          //    $('.back-to-4').css('display', 'block');
-          //     // $('.navL').removeClass('back-to-5');
-          //     // $('.navL').addClass('back-to-4');
-          // });
-          //
-          // $('.back-to-6').click(function() {
-          //    qNumber=6
-          //    // flagName = flagName.slice(0, flagName.length-1);
-          //    console.log(qNumber);
-          //    console.log(flagName);
-          //    questionFlag(qNumber,'',2)
-          //    questionFlag(qNumber,'B',3)
-          //    $('.navL').css('display', 'none');
-          //    $('.back-to-5').css('display', 'block');
-          //     // $('.navL').removeClass('back-to-6');
-          //     // $('.navL').addClass('back-to-5');
-          // });
-
-        // });
-
-        // $( ".navL" ).live( "click", function() {
-        //   if (qNumber==1){
-        //       // qNumber=0
-        //       // $('.navL').click(function() {
-        //       //   $('.exit-quiz-modal').fadeIn();
-        //       // });
-        //   }
-        //
-        //   if (qNumber==2){
-        //       qNumber=1
-        //       flagName = flagName.slice(0, flagName.length-1);
-        //       console.log(qNumber);
-        //       console.log(flagName);
-        //       questionFlag(qNumber,'',2)
-        //       questionFlag(qNumber,'B',3)
-        //
-        //   }
-        //   if (qNumber==3){
-        //       qNumber=2
-        //       flagName = flagName.slice(0, flagName.length-1);
-        //       console.log(qNumber);
-        //       console.log(flagName);
-        //       questionFlag(qNumber,'B',2)
-        //       questionFlag(qNumber,'C',3)
-        //
-        //   }
-        //
-        // });
+          document.getElementById('pagecounter').innerText=qNumber+' / 6'
+          flagName=''
+          // $('.pagecounter, #Instructions, .quiz-dots, .quiz-flag, #symb1, #symb2, #symb3').css('display', 'block');
+        });
 
 
-        // $("img[src='img/1_A.png']").click(function() {
-        //
-        // });
 
 
         if (qNumber==1){
           $('.quiz-dot').css('background', 'transparent');
           $('.quiz-dot-1').css('background', 'black');
-          // $('.navL').css('display', 'none');
-          // $('.back-home').css('display', 'block');
-          // $('.navL').click(function() {
-          //   qNumber=0
-          //   $('.exit-quiz-modal').fadeIn();
-          // });
-          // $('.navL').click(function() {
-          //   $('.exit-quiz-modal').fadeIn();
-          // });
         }
         if (qNumber==2){
           $('.quiz-dot').css('background', 'transparent');
           $('.quiz-dot-2').css('background', 'black');
-          // $('.navL').css('display', 'none');
-          // $('.back-to-1').css('display', 'block');
-          // $('.navL').removeClass('back-home');
-          // $('.navL').addClass('back-to-1');
-          // $('.navL').click(function() {
-          //   qNumber=1
-          //   flagName = flagName.slice(0, flagName.length-1);
-          //   console.log(qNumber);
-          //   console.log(flagName);
-          //   questionFlag(qNumber,'',2)
-          //   questionFlag(qNumber,'B',3)
-          // });
         }
         if (qNumber==3){
           $('.quiz-dot').css('background', 'transparent');
           $('.quiz-dot-3').css('background', 'black');
-          // $('.navL').css('display', 'none');
-          // $('.back-to-2').css('display', 'block');
-          // $('.navL').removeClass('back-to-1');
-          // $('.navL').addClass('back-to-2');
-          // $('.navL').click(function() {
-          //   qNumber=2
-          //   flagName = flagName.slice(0, flagName.length-1);
-          //   console.log(qNumber);
-          //   console.log(flagName);
-          //   questionFlag(qNumber,'A',1)
-          //   questionFlag(qNumber,'B',2)
-          //   questionFlag(qNumber,'C',3)
-          // });
         }
         if (qNumber==4){
           $('.quiz-dot').css('background', 'transparent');
           $('.quiz-dot-4').css('background', 'black');
-          // $('.navL').css('display', 'none');
-          // $('.back-to-3').css('display', 'block');
-          // $('.navL').removeClass('back-to-2');
-          // $('.navL').addClass('back-to-3');
         }
         if (qNumber==5){
           $('.quiz-dot').css('background', 'transparent');
           $('.quiz-dot-5').css('background', 'black');
-          // $('.navL').css('display', 'none');
-          // $('.back-to-4').css('display', 'block');
-          // $('.navL').removeClass('back-to-3');
-          // $('.navL').addClass('back-to-4');
         }
         if (qNumber==6){
           $('.quiz-dot').css('background', 'transparent');
           $('.quiz-dot-6').css('background', 'black');
-          // $('.navL').css('display', 'none');
-          // $('.back-to-5').css('display', 'block');
-          // $('.navL').removeClass('back-to-4');
-          // $('.navL').addClass('back-to-5');
         }
         if (qNumber>=7){
-          $('.pagecounter, .quiz-dots, .quiz-flag, #symb1, #symb2, #symb3, .instructions-mobile.top-margin').css('display', 'none');
-          // $('.navL').css('display', 'none');
-          // $('.back-to-6').css('display', 'block');
-          // $('.navL').removeClass('back-to-5');
-          // $('.navL').addClass('back-to-6');
+          $('.pagecounter, .quiz-dots, .quiz-flag, .navL, #symb1, #symb2, #symb3, .instructions-mobile.top-margin').css('display', 'none');
         }
         if (qNumber==1 | qNumber==6 )
         {
@@ -275,7 +126,9 @@
     function setQuestion(flagName)
       {
         H='<p class="instructions input-instructions">...<br/>Before we reveal your Current State… <br> What is your Nationality?</p><br><form id="myForm" action="" method="POST" target="no-target"><INPUT TYPE="text" PlaceHolder="Your nationality" id="whereverfield" name="wherever"><INPUT TYPE="hidden" id="myflagfield" name="flag" value="'+flagName+'"><br><br><button id="subBut" class="button-large button-disabled" onclick="sendToGoogle();" style-"cursor:pointer;">REVEAL MY STATE</button></form>'
-        document.getElementById('Instructions').innerHTML=H
+        $('#Instructions').css('display', 'none');
+        $('#Instructions2').css('display', 'block');
+        document.getElementById('Instructions2').innerHTML=H
 
         $( "#whereverfield" ).keyup(function() {
           $('#subBut').removeClass('button-disabled');
@@ -323,6 +176,8 @@
 
   function sendToGoogle()
     {
+
+      attributes=[]
 
       $('.navL').css('display', 'none');
       F=document.forms[0];
@@ -376,6 +231,9 @@
       var fourthChar = $('.bigFlag img').attr('src').charAt(13);
       var fifthChar = $('.bigFlag img').attr('src').charAt(14);
       var sixthChar = $('.bigFlag img').attr('src').charAt(15);
+
+
+
 
       if (firstChar == 'A') {
         attributes.push('Introverted');
@@ -547,33 +405,10 @@
         <img src="img/back.svg" onclick="goBack()">
       </div> -->
 
-      <div class="navL back-home">
+      <div class="navL">
         <img src="img/back.svg" >
       </div>
 
-      <!-- <div class="navL back-to-1">
-        <img src="img/back.svg" >
-      </div>
-
-      <div class="navL back-to-2">
-        <img src="img/back.svg" >
-      </div>
-
-      <div class="navL back-to-3">
-        <img src="img/back.svg" >
-      </div>
-
-      <div class="navL back-to-4">
-        <img src="img/back.svg" >
-      </div>
-
-      <div class="navL back-to-5">
-        <img src="img/back.svg" >
-      </div>
-
-      <div class="navL back-to-6">
-        <img src="img/back.svg" >
-      </div> -->
 
       <div id="pagecounter" class="pagecounter">
         1 / 6
@@ -600,6 +435,9 @@
               On each of the following screens,  select one of the presented shapes.
             </p>
           </div>
+          <div id="Instructions2" class="instructions">
+
+          </div>
           <div class="row flag-row">
             <div class="col-xs-12 col-sm-4">
               <div id="symb1" class="symb" onclick="setQuestionFlags(this)">
@@ -617,7 +455,7 @@
           <div class="row instructions-mobile top-margin">
             <div class="col-xs-12 center">
               <p class="instructions">
-                Follow your gut feeling to find your true current state.
+                Follow your gut feeling to find your  true current state.
               </p>
             </div>
           </div>
