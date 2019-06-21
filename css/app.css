@@ -598,7 +598,9 @@ input {
 
 @media (min-width: 1026px) and (max-width: 1150px) {
   .states .col-xs-12 .image-overlay .row, .states .col-sm-3 .image-overlay .row {
-    padding: 25px 25px 0 25px; } }
+    padding: 25px 25px 0 25px; }
+  .states .col-xs-12 .image-overlay .heading-row, .states .col-sm-3 .image-overlay .heading-row {
+    padding: 15px 32px; } }
 @media (min-width: 926px) and (max-width: 1025px) {
   .states .col-xs-12 .image-overlay, .states .col-sm-3 .image-overlay {
     height: 97%; }
