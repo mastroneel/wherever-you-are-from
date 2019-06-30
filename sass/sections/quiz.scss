@@ -22,6 +22,7 @@
   display: none;
   .share-button {
     margin-top: 56px;
+    visibility: hidden;
   }
   .button-small {
     display: inline-block;
@@ -89,7 +90,7 @@
   .close-quiz-button {
     position: absolute;
     top: 64px;
-    right: 48px;
+    right: 58px;
     img {
       width: 40px;
     }

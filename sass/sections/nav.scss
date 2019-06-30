@@ -1,4 +1,7 @@
 // Desktop nav
+
+
+
 .nav-desktop {
   position: fixed;
   top: 0;
@@ -36,6 +39,9 @@
   .nav-right a {
     margin-right: 48px;
   }
+  .nav-right .states-link {
+    margin-right: 0;
+  }
 }
 
 // Bottom nav
@@ -52,6 +58,14 @@
   transition: 0.3s;
   img {
     width: 40px;
+  }
+}
+
+.home-desktop-nav {
+  .nav-link {
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s;
   }
 }
 

@@ -269,6 +269,8 @@ input {
     text-transform: uppercase; }
   .nav-desktop .nav-right a {
     margin-right: 48px; }
+  .nav-desktop .nav-right .states-link {
+    margin-right: 0; }
 
 .bottom-nav {
   text-align: center;
@@ -283,6 +285,11 @@ input {
   transition: 0.3s; }
   .bottom-nav img {
     width: 40px; }
+
+.home-desktop-nav .nav-link {
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.3s; }
 
 .nav-mobile {
   height: 72px;
@@ -503,9 +510,8 @@ input {
     line-height: 24px;
     letter-spacing: 0.02em;
     color: #fff;
-    margin-right: 40px; }
-    .about .email-link:hover {
-      color: #BDBDBD; }
+    margin-right: 40px;
+    display: inline; }
 
 .dark-bg {
   background-color: rgba(0, 0, 0, 0.8); }
@@ -686,7 +692,8 @@ input {
 .results {
   display: none; }
   .results .share-button {
-    margin-top: 56px; }
+    margin-top: 56px;
+    visibility: hidden; }
   .results .button-small {
     display: inline-block;
     height: 28px;
@@ -732,7 +739,7 @@ input {
 .wrapperQ .close-quiz-button {
   position: absolute;
   top: 64px;
-  right: 48px; }
+  right: 58px; }
   .wrapperQ .close-quiz-button img {
     width: 40px; }
 .wrapperQ .open-modal {
